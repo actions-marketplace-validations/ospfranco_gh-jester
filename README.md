@@ -1,16 +1,25 @@
-# ospfranco/gh-jester
+# Github Jester
 
-Run jest tests, add annotations to failing tests. By default it runs `npm run test:ci` but it can be configured: `npm run ${command}`.
+<img width="915" alt="gh-jester" src="https://user-images.githubusercontent.com/1634213/130349620-45238d50-3688-4be5-8763-65b7605cb507.png">
+
+<div align="center">
+  <a align="center" href="https://github.com/ospfranco?tab=followers">
+    <img src="https://img.shields.io/github/followers/ospfranco?label=Follow%20%40ospfranco&style=social" />
+  </a>
+  <br />
+  <a align="center" href="https://twitter.com/ospfranco">
+    <img src="https://img.shields.io/twitter/follow/ospfranco?label=Follow%20%40ospfranco&style=social" />
+  </a>
+</div>
+<br />
+
+Run jest tests, post the results to your commit/PR.
 
 # Versions
 
 You can use a specific `version` of this action. The latest published version is `v1.0.13`. You can also use `latest` to always get the latest version.
 
-# Posting test results
-
-This action will post a resume of the tests if any of your suites fails, it simply posts the suite path and the name of the failing test and it is meant to provide guidance to which tests could be possibly failing
-
-# Example job
+# How to use
 
 ```yml
 on: push
@@ -28,6 +37,8 @@ test:
       run: npm install
     - name: Run tests
       uses: ospfranco/gh-jester@v1.0.13
+      with:
+        post-comment: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITHUB_CONTEXT: ${{ toJson(github) }}
